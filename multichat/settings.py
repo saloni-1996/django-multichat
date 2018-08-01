@@ -25,7 +25,7 @@ SECRET_KEY = '73iu$mln(ex7^eifb06be0t$ha6)5eza)_e(d-pe!=w2$y7i-w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'channels',
     'chat',
+    'fil_auth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,5 +142,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+
+AUTH_USER_MODEL = 'fil_auth.CustomUser'
 
 STATIC_URL = '/static/'

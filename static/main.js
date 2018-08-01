@@ -49,14 +49,22 @@ $(function() {
       console.log("Leaving room " + data.leave);
       $("#room-" + data.leave).remove();
     } else if (data.message || data.msg_type != 0) {
+      // console.log(data)
       var msgdiv = $("#room-" + data.room + " .messages");
       var ok_msg = "";
+      var username;
+      if (data.username == ""){
+        username = "AnonymousUser";
+      }
+      else{
+        username = data.username;
+      }
       // msg types are defined in chat/settings.py
       // Only for demo purposes is hardcoded, in production scenarios, consider call a service.
       switch (data.msg_type) {
         case 0:
           // Message
-          ok_msg = "<div class='message'>" + "<span class='username'>" + data.username + "</span>" + "<span class='body'>" + data.message + "</span>" + "</div>";
+          ok_msg = "<div class='message'>" + "<span class='username'>" + username + "</span>" + "<span class='body'>" + data.message + "</span>" + "</div>";
           break;
         case 1:
           // Warning/Advice messages

@@ -6,7 +6,8 @@ from .settings import MSG_TYPE_LEAVE, MSG_TYPE_ENTER, NOTIFY_USERS_ON_ENTER_OR_L
 from .models import Room
 from .utils import get_room_or_error, catch_client_error
 from .exceptions import ClientError
-from django.contrib.auth.models import User
+from django.conf import settings
+
 
 
 @channel_session_user_from_http
@@ -74,5 +75,6 @@ def chat_leave(message):
 @catch_client_error
 @channel_session_user
 def chat_send(message):
+    print(message.user)
     room = get_room_or_error(message["room"], message.user)
     room.send_message(message["message"], message.user)
