@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'channels',
     'chat',
     'fil_auth',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'fil_auth.middleware.RestrictStaffToAdminMiddleware'
 ]
 
 ROOT_URLCONF = 'multichat.urls'
@@ -144,5 +146,14 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'fil_auth.CustomUser'
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "cse2k1401@gmail.com"
+EMAIL_HOST_PASSWORD = "Cse@2k14"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

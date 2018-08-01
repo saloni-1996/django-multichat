@@ -5,4 +5,5 @@ class CustomUser(AbstractUser):
     is_admin = models.BooleanField(default = False)
     is_ecoord = models.BooleanField(default = False)
     is_presenter = models.BooleanField(default = True)
-    about = models.CharField(max_length=1000)
+    about = models.CharField(max_length = 1000)
+    temp = models.CharField(max_length = 10)
