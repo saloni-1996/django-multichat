@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/auth/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Internationalization
