@@ -75,6 +75,13 @@ header a {
     color: #fff;
 }
 
+/* .nav{
+    overflow: hidden;
+}
+.dropdown{
+    margin: 1em;
+} */
+
 /* Body */
 section {
     width: 800px;

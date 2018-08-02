@@ -1,0 +1,85 @@
+{% extends "base.html"%}
+{% load i18n %}
+
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}"> 
+{% endblock %}
+	
+	{% block content %}
+	{% if user.is_authenticated %}
+	<!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Coordinators</h3>
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'registration_register' %}">ADD</a></li>
+                            <!-- <li class="breadcrumb-item">Apps</li>
+                            <li class="breadcrumb-item active">Contact2</li> -->
+                        </ol>
+                    </div>
+                    
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+                <div class="row">
+                    <!-- .col -->
+                    {% for i in ecoordlist %}
+                    <div class="col-md-6 col-lg-6 col-xlg-4">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-3 text-center">
+                                    <a href="app-contact-detail.html"><img src="{% static "/assets/images/users/4.jpg" %}"rs/1.jpg" %}" alt="user" class="img-circle img-responsive"></a>
+                                </div>
+                                <div class="col-md-8 col-lg-9">
+                                    <h3 class="box-title m-b-0">{{ i }}</h3> <small>Desgination</small>
+                                    <address>
+                                        {{ i.about }}
+                                        <br/>
+                                        <br/>
+                                        <span>Admin: {{ i.is_admin }}</span>
+                                        <br/>
+                                        <span>Presenter: {{ i.is_presenter}}</span>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- /.col -->
+                    <!-- .col -->
+                    
+                </div>
+                <!-- /.row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+               
+
+
+
+	{% else %}
+
+        
+	{% endif %}
+
+	{% endblock %}
+
+
+ 

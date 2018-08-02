@@ -87,6 +87,7 @@ class RegistrationView(BaseRegistrationView):
 
         """
         site = get_current_site(self.request)
+        print(form)
         # Cleaning up form
         form.cleaned_data.pop('password1')
         form.cleaned_data.pop('password2')
