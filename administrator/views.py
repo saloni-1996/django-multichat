@@ -4,13 +4,12 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from fil_auth.models import CustomUser
+from django.contrib.auth.decorators import user_passes_test
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required
 def main_panel(request):
-	if request.user.is_authenticated:
-		username = request.user.username
-		usertype = CustomUser.objects.get(username = username)
-		if((usertype.is_admin)):
-			request.session['usertype'] = 'admin'
-			ecoord_list = CustomUser.objects.all().filter(is_ecoord = True)
-			return render(request, 'administrator/adminpanel.html', { 'ecoordlist' : ecoord_list})
+	user = request.user
+	if user.is_superuser:
+		ecoord_list = CustomUser.objects.all().filter(is_ecoord = True)
+		return render(request, 'administrator/adminpanel.html', { 'ecoordlist' : ecoord_list})
