@@ -1,10 +1,9 @@
-from django.urls import path, include
+from django.conf.urls import url
 from coordinator import views
 
 # import eventcoord
 
 urlpatterns = [
-    path(r'^$', views.main_panel, name='coord_main_panel'),
-    path(r'^(?P<event_id>\d+)/dashboard/$', views.dashboard, name='coord_dashboard'),
-
+	url(r'^$', views.main_panel, name='coord_main_panel'),
+	url(r'^(?P<event_id>\d+)/dashboard/$', views.dashboard, name='coord_dashboard'),
 ]

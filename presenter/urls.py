@@ -1,6 +1,6 @@
-from django.urls import path, include
+from django.conf.urls import url
 from presenter import views
 
 urlpatterns = [
-	path(r'^$', views.dashboard, name='presenter_dashboard'),
+	url(r'^$', views.dashboard, name='presenter_dashboard'),
 ]
