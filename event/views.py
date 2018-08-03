@@ -14,6 +14,6 @@ def view_event(request, event_id):
     """View event details."""
     pass
 
-def view_event_qr(request, event_id):
+def show_event_qr(request, event_id):
     """View Qr code for event."""
     pass

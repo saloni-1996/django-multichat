@@ -1,7 +1,8 @@
 from django.urls import path, include
 from administrator import views
+from django.conf.urls import url
 #import eventcoord
 
 urlpatterns = [
-	path(r'^$', views.main_panel, name='admin_main_panel'),
+	url(r'^$', views.main_panel, name='admin_main_panel'),
 ]
