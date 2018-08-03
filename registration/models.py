@@ -6,7 +6,7 @@ import logging
 import re
 import string
 import warnings
-
+import uuid
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -415,14 +415,14 @@ class RegistrationProfile(models.Model):
 
         ctx_dict = {
             'user': self.user,
-            'password': self.user.temp,
+            'password': self.user.idf,
             'activation_key': self.activation_key,
             'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS,
             'site': site,
         }
 
         # Cleaning up
-        self.user.temp = ""
+        self.user.idf = uuid.uuid4()
         self.user.save()
 
         subject = (getattr(settings, 'REGISTRATION_EMAIL_SUBJECT_PREFIX', '') +

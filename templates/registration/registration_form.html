@@ -11,9 +11,10 @@
         <input type="email" name="email" required id="id_email" />
     </p>
     <p class="required">
-        <input type="password" name="password1" required id="id_password1" value="helloworld" hidden /> </p>
+        <input type="password" name="password1" required id="id_password1" value="{{user.idf}}" hidden /> </p>
     <p class="required">
-        <input type="password" name="password2" required id="id_password2" value="helloworld" hidden/></p>
+        <input type="password" name="password2" required id="id_password2" value="{{user.idf}}" hidden/></p>
+
     <input type="submit" value="Submit" />
 </form>
 {% endblock %} {% comment %} **registration/registration_form.html** Used to show the form users will fill out to register. By default, has the following context: ``form`` The registration form. This will be an instance of some subclass of ``django.forms.Form``; consult `Django's forms documentation
