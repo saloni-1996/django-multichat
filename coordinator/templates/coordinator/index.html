@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'events/assets/images/favicon.png' %}">
+    <title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'events/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'events/css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'events/css/colors/default-dark.css' %}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header single-column fix-sidebar">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Admin Pro</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="{% static 'events/assets/images/logo-icon.png' %}" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="{% static 'events/assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="{% static 'events/assets/images/logo-text.png' %}" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="{% static 'events/assets/images/logo-light-text.png' %}" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="layout-single-column.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'events/assets/images/users/1.jpg' %}" alt="user" class="profile-pic" /></a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src="{% static 'events/assets/images/users/1.jpg' %}" alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>{{ username }}</h4>
+                                                <p class="text-muted">{{ email }}</p>
+                                                <a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        </div>
+                                    </li>
+                                    <!--<li role="separator" class="divider"></li>-->
+                                    <!--<li><a href="layout-single-column.html#"><i class="ti-user"></i> My Profile</a></li>-->
+                                    <!--<li><a href="layout-single-column.html#"><i class="ti-wallet"></i> My Balance</a></li>-->
+                                    <!--<li><a href="layout-single-column.html#"><i class="ti-email"></i> Inbox</a></li>-->
+                                    <!--<li role="separator" class="divider"></li>-->
+                                    <!--<li><a href="layout-single-column.html#"><i class="ti-settings"></i> Account Setting</a></li>-->
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="layout-single-column.html#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+
+                <div class="ml-auto" style="text-align: end;margin: 0px 16px 0px 0px">
+                    <button type="button" class="btn btn-success btn-rounded"><i class="fa fa-plus-circle m-r-5"></i><a href="{% url 'events:add_event' 1 %}" style="color:white">Create New</a></button>
+                </div>
+
+                <br/>
+
+                <div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Events</h2>
+                                <!--<h6 class="card-subtitle">Add class <code>.color-table .inverse-table</code></h6>-->
+                                <div class="table-responsive">
+                                    <table class="table full-color-table full-inverse-table hover-table">
+                                        <thead>
+                                        <tr>
+                                            <th width="10%">S.No</th>
+                                            <th width="50%">Event Name</th>
+                                            <th width="10%" align="center">Dashboard</th>
+                                            {% if flag %}
+                                                <th width="10%" align="center">Edit</th>
+                                            {% endif %}
+                                            <th width="10%" align="center">View</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for event in event_list %}
+
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ event.event_name }}</td>
+
+                                                    <td>
+                                                        <!--<button class="btn btn-secondary">-->
+                                                            <a href="{% url 'events:dashboard' event.pk %}">
+                                                                <i class="fas fa-tachometer-alt"  style="color:blue"></i>
+                                                            </a>
+                                                        <!--</button>-->
+                                                    </td>
+
+                                                    {% if flag %}
+
+                                                        <td>
+                                                            <a href="{% url 'events:edit' event.pk %}">
+                                                                <i class="far fa-edit" style="color:blue"></i>
+                                                            </a>
+                                                        </td>
+
+                                                    {% endif %}
+
+                                                    <td>
+                                                        <a href="{% url 'events:view' event.pk %}">
+                                                            <i class="fas fa-eye" style="color:blue"></i>
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+
+                                            {% endfor %}
+
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <!--<footer class="footer">-->
+                <!--&lt;!&ndash;© 2018 FIL Real Time Feedbacks&ndash;&gt;-->
+            <!--</footer>-->
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'events/assets/plugins/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'events/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'events/js/custom.min.js' %}"></script>
+</body>
+
+</html>
