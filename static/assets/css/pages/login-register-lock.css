@@ -21,13 +21,16 @@ Login register and recover password Page
 .login-register {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 50% 50%;
   height: 100%;
   width: 100%;
   padding: 10% 0;
   position: fixed; }
-
+.card{
+  border
+}
 .login-box {
+ /* background: transparent;*/
   width: 400px;
   margin: 0 auto; }
   .login-box .footer {
