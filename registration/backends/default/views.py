@@ -9,7 +9,7 @@ from ...views import ActivationView as BaseActivationView
 from ...views import RegistrationView as BaseRegistrationView
 from ...views import ResendActivationView as BaseResendActivationView
 import uuid
-
+from ...models import send_email
 
 class RegistrationView(BaseRegistrationView):
     """
@@ -87,27 +87,49 @@ class RegistrationView(BaseRegistrationView):
 
         """
         site = get_current_site(self.request)
-        print(form)
+        idf = form.cleaned_data['password1']
+        added_by = UserModel().objects.get(idf = idf)
+        print(form.cleaned_data['username'])
+        print(UserModel().objects.filter(username = form.cleaned_data['username']))
+        user_exists = len(UserModel().objects.filter(username = form.cleaned_data['username'])) > 0
+        print(user_exists)
         # Cleaning up form
         form.cleaned_data.pop('password1')
         form.cleaned_data.pop('password2')
-        # Generating temp password
-        passwd = str(uuid.uuid4())[:8]
-        form.cleaned_data['password'] = passwd
-        form.cleaned_data['temp'] = passwd
 
-        new_user_instance = (UserModel().objects
-                            .create_user(**form.cleaned_data))
+        if not user_exists:
+            # Generating temp password
+            passwd = str(uuid.uuid4())[:8]
+            form.cleaned_data['password'] = passwd
+            # Temporarily using passowrd as identificaiton to send password in mail.
+            form.cleaned_data['idf'] = passwd
+            if added_by.is_superuser:
+                form.cleaned_data['is_ecoord'] = True
+            if added_by.is_ecoord:
+                form.cleaned_data['is_presenter'] = True
 
-        new_user = self.registration_profile.objects.create_inactive_user(
-            new_user=new_user_instance,
-            site=site,
-            send_email=self.SEND_ACTIVATION_EMAIL,
-            request=self.request,
-        )
-        signals.user_registered.send(sender=self.__class__,
-                                     user=new_user,
-                                     request=self.request)
+            new_user_instance = (UserModel().objects
+                                .create_user(**form.cleaned_data))
+
+            new_user = self.registration_profile.objects.create_inactive_user(
+                new_user=new_user_instance,
+                site=site,
+                send_email=self.SEND_ACTIVATION_EMAIL,
+                request=self.request,
+                )
+            signals.user_registered.send(sender=self.__class__,
+                                    user=new_user,
+                                    request=self.request)
+        else:
+            new_user = UserModel().objects.get(username = form.cleaned_data['username'])
+            ctx_dict = {user: new_user, site: site}
+            if added_by.is_superuser:
+                send_email(form.cleaned_data['email'], ctx_dict, 'registration/new_coord_added_subject.txt', 'registration/new_coord_added_email.txt',
+                            'registration/new_coord_added_email.html')
+            if added_by.is_ecoord:
+                send_email(form.cleaned_data['email'], ctx_dict, 'registration/new_presenter_added_subject.txt', 'registration/new_presenter_added_email.txt',
+                            'registration/new_presenter_added_email.html')
+
         return new_user
 
     def registration_allowed(self):

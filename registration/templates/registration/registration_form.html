@@ -4,6 +4,7 @@
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 
 {% block content %}
+
 <form method="post" action="">
     {% csrf_token %}
     <p class="required"><label class="required" for="id_username">Username:</label> <input type="text" name="username" maxlength="150" autofocus required id="id_username" /> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>

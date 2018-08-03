@@ -37,7 +37,7 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = (UsernameField(), "email")
+        fields = ("username", "email")
 
 
 class RegistrationFormUsernameLowercase(RegistrationForm):
@@ -49,7 +49,8 @@ class RegistrationFormUsernameLowercase(RegistrationForm):
     def clean_username(self):
         username = self.cleaned_data.get('username', '').lower()
         if User.objects.filter(**{UsernameField(): username}).exists():
-            raise forms.ValidationError(_('A user with that username already exists.'))
+            print("username exists", username)
+            # raise forms.ValidationError(_('A user with that username already exists.'))
 
         return username
 
