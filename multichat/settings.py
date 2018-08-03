@@ -35,6 +35,11 @@ INSTALLED_APPS = [
     'chat',
     'fil_auth',
     'registration',
+    'administrator',
+    'attendee',
+    'dashboard',
+    'event',
+    'presenter',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGIN_REDIRECT_URL = "/auth/"
+LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Internationalization
@@ -154,6 +159,6 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "cse2k1401@gmail.com"
-EMAIL_HOST_PASSWORD = "Cse@2k14"
+EMAIL_HOST_PASSWORD = ""
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

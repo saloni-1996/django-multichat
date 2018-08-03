@@ -13,4 +13,4 @@ def main_panel(request):
 		if((usertype.is_admin)):
 			request.session['usertype'] = 'admin'
 			ecoord_list = CustomUser.objects.all().filter(is_ecoord = True)
-			return render(request, 'fil_auth/adminpanel.html', { 'ecoordlist' : ecoord_list})
+			return render(request, 'administrator/adminpanel.html', { 'ecoordlist' : ecoord_list})
