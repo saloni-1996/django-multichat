@@ -18,7 +18,7 @@ class EventSession(models.Model):
     Event Session model
     """
     session_name = models.CharField(max_length=200)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='session_set')
     # Event Presenter
     presenter = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 

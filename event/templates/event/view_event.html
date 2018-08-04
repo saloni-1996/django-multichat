@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
+    <title>{{ event.event_name }}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'assets/plugin/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'css/colors/default-dark.css' %}" id="theme" rel="stylesheet">
+
+    <style>
+        @media print { @page { margin: 0; } body { margin: 1.6cm; } }
+
+        tr{
+            padding-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body class="fix-header single-column fix-sidebar">
+
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="{% static 'assets/images/logo-icon.png' %}" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="{% static 'assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                        </b>
+                         <img src="{% static 'assets/images/logo-text.png' %}" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->
+                         <img src="{% static 'assets/images/logo-light-text.png' %}" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="layout-single-column.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'assets/images/users/1.jpg' %}" alt="user" class="profile-pic" /></a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src="{% static 'assets/images/users/1.jpg' %}" alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>{{ username }}</h4>
+                                                <p class="text-muted">{{ email }}</p>
+                                                <a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="layout-single-column.html#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="page-wrapper">
+
+            <div class="container-fluid">
+                <div>
+                    <div class="col-lg-12">
+                        <div class="card" >
+                            <div class="card-body" id="card">
+                                <div style="width: 50%;float: left">
+
+                                    <h1 class="card-title"><center>Event Overview</center></h1>
+
+                                    <br/>
+                                    <h2>{{ event.event_name }}</h2>
+
+                                    <h6>{{ event.timestamp }}</h6>
+
+                                    <br/>
+
+                                    <p>
+                                        {{event.description}}
+                                    </p>
+
+                                    <h6>Event Coordinator</h6>
+                                    <span class="label label-info label-rounded pull-right">{{ event.coordinator }}</span>
+                                    <br/>
+
+
+                                    <br/>
+                                    <h2>Sessions</h2>
+                                    <br/>
+
+                                    <div class="profiletimeline">
+
+
+
+                                        {% for session in event.session_set.all %}
+
+                                            <div class="sl-item">
+                                                <div class="sl-left"><div class="timeline-badge success"><button class="btn btn-circle btn-success">{{ forloop.counter }}</button></div></div>
+                                                <div class="sl-right">
+                                                    <div>
+                                                        <h5>{{ session.session_name }}</h5>
+                                                        <p><h6>Session duration: <span class="sl-date"> 1 hr 20 min</span></h6></p>
+                                                        <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
+                                                    </div>
+                                                    <div class="like-comm m-t-20">
+                                                        <h6>Presenter</h6>
+                                                        <span class="label label-info label-rounded pull-right">{{ session.presenter }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% if forloop.counter != event.session_set.all.count %}
+                                                <hr>
+                                            {% endif  %}
+
+
+                                        {% endfor %}
+
+
+
+                                    </div>
+
+                                </div>
+                                <div style="width: 50%;float: right;text-align: center">
+                                    <h1 class="card-title"><center>QR Code</center></h1>
+
+                                    <br/>
+
+                                    <img align="middle" src="https://api.qrserver.com/v1/create-qr-code/?data=event_id&amp;size=300x300"
+                                         width="300"
+                                         height="300" />
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="text-align:center">
+
+                    <a onclick="PrintElem()" target="_blank" style="cursor:pointer; ">
+                        <button type="button" class="btn btn-info btn-rounded">Print</button>
+                    </a>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <script>
+        function PrintElem()
+        {
+            var divElements = document.getElementById('card').innerHTML;
+            //Get the HTML of whole page
+
+            var oldPage = document.body.innerHTML;
+
+            // divElements.setAttribute("padding", '16px');
+            //Reset the page's HTML with div's HTML only
+            document.body.innerHTML =
+              "<html><head></head><body style='margin: 16px'>" + '<br/>' + divElements + "</body>";
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+        }
+
+    </script>
+    <script src="{% static 'assets/plugin/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/plugin/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
