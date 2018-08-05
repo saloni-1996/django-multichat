@@ -5,13 +5,14 @@
     <title>{% block title %}{% endblock %}</title>
     <meta charset="UTF-8">
      <link rel="stylesheet" href="{% static 'assets/plugin/bootstrap/css/bootstrap.min.css' %}" />
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="{% static 'main.css' %}" />
      -->
     {% block extra_head %}{% endblock %}
 </head>
 <body>
     <header>
-        <h1>{% block header_text %}{% endblock %}</h1>
+        
         {% if user.is_authenticated %}
             <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="#">
@@ -28,7 +29,7 @@
                     
                 </div>
             </div>
-
+        {% block header_text %}{% endblock %}
         </nav>
         {% endif %}
     </header>
