@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.conf import settings
+
 from .models import Event
 
 # Create your views here.
@@ -20,7 +22,7 @@ def edit_event(request, event_id):
 def view_event(request, event_id):
     """View event details."""
     event = Event.objects.get(pk=event_id)
-    return render(request, 'event/view_event.html', {'event':event})
+    return render(request, 'event/view_event.html', {'event':event, 'SITE_URL': settings.SITE_URL})
 
 
 @login_required

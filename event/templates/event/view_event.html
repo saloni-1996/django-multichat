@@ -146,7 +146,7 @@
 
                                     <br/>
 
-                                    <img align="middle" src="https://api.qrserver.com/v1/create-qr-code/?data=event_id&amp;size=300x300"
+                                    <img align="middle" src="https://api.qrserver.com/v1/create-qr-code/?data={{ SITE_URL }}{% url 'attendee:show_event' event.id %}" &amp;size=300x300"
                                          width="300"
                                          height="300" />
                                 </div>

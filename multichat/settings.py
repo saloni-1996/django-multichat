@@ -164,3 +164,5 @@ EMAIL_HOST_PASSWORD = "Cse@2k14"
 
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+SITE_URL = "http://localhost:8000"
