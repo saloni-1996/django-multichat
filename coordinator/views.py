@@ -7,6 +7,8 @@ from event.models import Event
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
+
+
 @user_passes_test(lambda u: u.is_ecoord or u.is_superuser)
 @login_required
 def main_panel(request):
@@ -17,9 +19,3 @@ def main_panel(request):
     return render(request, "coordinator/ecoordpanel.html", {'event_list': event_list, 'flag': True})
 
 
-@user_passes_test(lambda u: u.is_ecoord or u.is_superuser)
-@login_required
-def dashboard(request, event_id):
-    """dashboard for coordinator."""
-    return render(request, "coordinator/ecoorddashboard.html", {})
-    
