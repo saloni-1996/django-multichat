@@ -40,6 +40,9 @@
                             <br/> {% if i.is_presenter %}
                             <span class="badge badge-danger">Presenter</span> {% else %}
                             <span class="badge badge-light" style="text-decoration: line-through;">Presenter</span> {% endif %}
+                            {% if i.is_active %}
+                            <span class="badge badge-success">Active</span> {% else %}
+                            <span class="badge badge-light" style="text-decoration: line-through;">Active</span> {% endif %}
                         </address>
                     </div>
                     <div class="col-md-2 ">
