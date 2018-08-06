@@ -4,8 +4,8 @@ from django.urls import reverse
 from event.models import Event
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
-from event.forms import EventForm
-
+from event.forms import EventForm ,NewQuestionForm
+from dashboard.views import view_dashboard
 # Create your views here.
 
 
@@ -74,3 +74,13 @@ def show_event_qr(request, event_id):
     """View Qr code for event."""
     return render(request, 'event/qr.html', { 'event_id': event_id})
  
+@login_required
+def view_dashboard(request, event_id):
+    return HttpResponseRedirect(reverse('view_dashboard'))
+
+@login_required
+def add_question(request, event_id):
+    new_question_form = NewQuestionForm()
+    # if request.method == 'POST':
+        
+    return render(request, 'event/addquestion.html', {'form': new_question_form})
