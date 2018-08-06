@@ -14,11 +14,12 @@ def main_panel(request):
     custom_user = request.user
     event_list = custom_user.event_set.all()
     # flag is used to give option for the user to the edit event
-    return render(request, "coordinator/index.html", {'event_list': event_list, 'flag': True})
+    return render(request, "coordinator/ecoordpanel.html", {'event_list': event_list, 'flag': True})
 
 
 @user_passes_test(lambda u: u.is_ecoord or u.is_superuser)
 @login_required
-def dashboard(request):
+def dashboard(request, event_id):
     """dashboard for coordinator."""
-    pass
+    return render(request, "coordinator/ecoorddashboard.html", {})
+    
