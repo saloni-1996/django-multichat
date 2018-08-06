@@ -8,6 +8,6 @@ def feedback(request, event_id):
     rooms = Room.objects.order_by("title")
 
     # Render that in the index template
-    return render(request, "index.html", {
+    return render(request, "feedback/feedback.html", {
         "rooms": rooms,
     })
