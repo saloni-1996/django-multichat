@@ -19,6 +19,7 @@ def main_panel(request):
 
 @user_passes_test(lambda u: u.is_ecoord or u.is_superuser)
 @login_required
-def dashboard(request):
+def dashboard(request, event_id):
     """dashboard for coordinator."""
-    pass
+    return render(request, "coordinator/ecoorddashboard.html", {})
+    

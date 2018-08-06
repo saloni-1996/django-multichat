@@ -72,4 +72,5 @@ def view_event(request, event_id):
 @login_required
 def show_event_qr(request, event_id):
     """View Qr code for event."""
-    pass
+    return render(request, 'event/qr.html', { 'event_id': event_id})
+ 

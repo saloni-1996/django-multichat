@@ -18,6 +18,12 @@ File: scss
 /*******************
  Sales overview Chart
 *******************/
+/* .collapse{
+ border-width: 0px 1px 1px 1px;
+ border-style: solid;
+ border-color: #398bf7; 
+} */
+
 #sales-overview2 .ct-point {
   stroke-width: 6px;
   stroke: #398bf7; }
