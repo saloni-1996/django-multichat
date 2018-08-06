@@ -4,7 +4,7 @@
 {% block header_text %}MultiChat Example{% endblock %}
 {% load staticfiles %}
 {% block extra_head %}
-<link rel="stylesheet" href="{% static 'feedback/main.css' %}" />
+<!-- <link rel="stylesheet" href="{% static 'feedback/main.css' %}" /> -->
 
 {% endblock %}
 {% block extra_body %}
@@ -14,16 +14,30 @@
 {% endblock %}
 
 {% block content %}
+<div class="container-fluid">
 
-    <ul class="rooms">
+      <div class="card">
+
+                            <div class="card-body">
+                                <h2 >Event title</h2>
+                                 <p class="text-lead"><b>Description</b> fsaljdfl kasdflka sdfjlkas dfjlkas fdjlkas fdjlask fd</p>
+
+                                <p class="card-text">Starting in <a href="#" class="btn btn-info">10 minutes</a></p>
+
+                            </div>
+                          </div>
+
+
+                        </div>
+    <!-- <ul class="rooms">
         {% for room in rooms %}
             <li class="room-link" data-room-id="{{ room.id }}">{{ room }}</li>
         {% empty %}
             <p class="empty">No chat rooms defined. Maybe make some in the <a href="{% url 'admin:index' %}">admin</a>?</p>
         {% endfor %}
-    </ul>
-
+    </ul> -->
+<!--
     <div id="chats">
-    </div>
+    </div> -->
 
 {% endblock %}
