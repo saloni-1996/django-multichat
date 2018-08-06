@@ -1,5 +1,4 @@
 {% load i18n %}
-{% blocktrans with site_name=site.name %}
 Hi {{user.username}},
 {% blocktrans with site_name=site.name %} You've been added as event presenter on {{site.name}}.{% endblocktrans %}
 

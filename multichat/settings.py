@@ -154,6 +154,7 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = 'fil_auth.CustomUser'
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+REGISTRATION_FORM = 'fil_auth.forms.MyRegForm'
 
 STATIC_URL = '/static/'
 

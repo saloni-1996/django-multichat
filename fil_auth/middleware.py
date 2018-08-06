@@ -15,7 +15,7 @@ class RestrictStaffToAdminMiddleware():
         print(reverse('admin:index')+'accounts/register')
         if request.path.startswith(reverse('index')+'accounts/register'):
             if request.user.is_authenticated:
-                if not request.user.is_staff:
+                if not (request.user.is_superuser or request.user.is_ecoord):
                     raise Http404
             else:
                 raise Http404
