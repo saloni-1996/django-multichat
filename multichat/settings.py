@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'channels',
-    'chat',
+    'feedback',
     'fil_auth',
     'registration',
     'administrator',

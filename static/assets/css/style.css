@@ -5927,11 +5927,3 @@ File: scss
     text-align: center;
     margin-top: 10px;
     overflow: hidden; } }
-    
-.toggle-switch {
-  margin-right: 240px;
-}
-
-.turn-switch {
-  background-color: #f23535;
-}

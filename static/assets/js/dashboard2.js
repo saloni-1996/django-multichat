@@ -13,7 +13,7 @@ $(function () {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         , series: [
           {meta:"Earning ($)", data: [0, 150, 110, 240, 200, 200, 300, 200, 380, 300, 400, 380]}
-        ]
+      ]
     }, {
         low: 0
         , high:400
@@ -138,27 +138,3 @@ $(function () {
           });
         });
 });
-
-function position_change(){
-  document.getElementById("chat").firstElementChild.classList.toggle("toggle-switch");
-}
-
-function turn_on() {
-  document.getElementById("session").classList.toggle("turn-switch")
-}
-
-
-// function position_change() {
-//   var elem = document.getElementById("chat");   
-//   var pos = 0;
-//   var id = setInterval(frame, 5);
-//   function frame() {
-//     if (pos == 350) {
-//       clearInterval(id);
-//     } else {
-//       pos++; 
-//       elem.style.top = pos + 'px'; 
-//       elem.style.left = pos + 'px'; 
-//     }
-//   }
-// }
