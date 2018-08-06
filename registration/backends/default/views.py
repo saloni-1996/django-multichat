@@ -133,7 +133,6 @@ class RegistrationView(BaseRegistrationView):
                 send_email((form.cleaned_data['email'],), ctx_dict, 'registration/new_presenter_added_subject.txt', 'registration/new_presenter_added_email.txt',
                             'registration/new_presenter_added_email.html')
         return HttpResponse("User added")
-||||||| merged common ancestors
         # Generating temp password
         passwd = str(uuid.uuid4())[:8]
         form.cleaned_data['password'] = passwd
@@ -152,7 +151,6 @@ class RegistrationView(BaseRegistrationView):
                                      user=new_user,
                                      request=self.request)
         return new_user
-=======
 
         if not user_exists:
             # Generating temp password
@@ -188,7 +186,7 @@ class RegistrationView(BaseRegistrationView):
                             'registration/new_presenter_added_email.html')
 
         return new_user
->>>>>>> 1b736257c49d63209acbc9b00883915e3a04787d
+
 
     def registration_allowed(self):
         """
