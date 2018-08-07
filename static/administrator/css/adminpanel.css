@@ -1,9 +1,21 @@
-body{
-	background-color: #F4F5F9;
+body {
+    background-color: #F4F5F9;
 }
-.add_ecoord{
-	float: right;
+
+.add_ecoord {
+    float: right;
 }
+
 a {
     color: #8c8888;
+}
+
+.flex-container{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+.flex-container ul{
+	list-style: none;
 }

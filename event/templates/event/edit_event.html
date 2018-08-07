@@ -1,24 +1,22 @@
-{% extends "base.html" %} {% load i18n %} {% block content %}
-<form method="post" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    
-
-    <input type="submit" value="Submit" />
-</form>
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
+{% extends "base.html" %} {% load i18n %}{% load static %} {% block content %}
+<div class="row m-t-40">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="" class="form-material">
+                    {% csrf_token %} {% for field in form %}
+                    <div class="fieldWrapper form-group">
+                        {{ field.errors }} {{ field.label_tag }} {{ field }}
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
-        {% endfor %}
-    {% endfor %}
-    {% for error in form.non_field_errors %}
-        <div class="alert alert-danger">
-            <strong>{{ error|escape }}</strong>
         </div>
-    {% endfor %}
-{% endif %}
-
-{% endblock %}
+    </div>
+</div>
+{% endblock %} {% block scripts%}
+<script src="{% static 'event/js/editevent.js' %}"></script>
+{% endblock%}
