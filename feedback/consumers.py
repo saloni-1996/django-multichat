@@ -28,7 +28,7 @@ def ws_receive(message):
 def ws_disconnect(message):
     for room_id in message.channel_session.get("rooms", set()):
         try:
-            room = Room.objects.get(pk=room_id)
+            room = Room.objects.get(room_title=room_id)
             room.websocket_group.discard(message.reply_channel)
         except Room.DoesNotExist:
             pass
@@ -45,10 +45,10 @@ def chat_join(message):
 
     room.websocket_group.add(message.reply_channel)
     message.channel_session['rooms'] = list(
-        set(message.channel_session['rooms']).union([room.id]))
+        set(message.channel_session['rooms']).union([room.title]))
     message.reply_channel.send({
         "text": json.dumps({
-            "join": str(room.id),
+            "join": str(room.title),
             "title": room.title,
         }),
     })
@@ -64,10 +64,10 @@ def chat_leave(message):
 
     room.websocket_group.discard(message.reply_channel)
     message.channel_session['rooms'] = list(
-        set(message.channel_session['rooms']).difference([room.id]))
+        set(message.channel_session['rooms']).difference([room.title]))
     message.reply_channel.send({
         "text": json.dumps({
-            "leave": str(room.id),
+            "leave": str(room.title),
         }),
     })
 

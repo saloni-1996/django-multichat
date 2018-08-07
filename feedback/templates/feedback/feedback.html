@@ -4,10 +4,7 @@
 {% block header_text %}MultiChat Example{% endblock %}
 {% load staticfiles %}
 {% block extra_head %}
-<!-- <link rel="stylesheet" href="{% static 'feedback/main.css' %}" /> -->
-
-{% endblock %}
-{% block extra_body %}
+  <link rel="stylesheet" href="{% static 'feedback/main.css' %}" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
     <script src="{% static 'feedback/main.js' %}"></script>
@@ -16,28 +13,26 @@
 {% block content %}
 <div class="container-fluid">
 
-      <div class="card">
+      <div class="card event-details">
 
-                            <div class="card-body">
-                                <h2 >Event title</h2>
-                                 <p class="text-lead"><b>Description</b> fsaljdfl kasdflka sdfjlkas dfjlkas fdjlkas fdjlask fd</p>
+                            <div class="card-body" id="event-details">
+                                <h2 ><b>Event Title:</b>{{event.event_name}}</h2>
+                                 <p class="text-lead"><b>Description </b>{{event.description}}</p>
 
-                                <p class="card-text">Starting in <a href="#" class="btn btn-info">10 minutes</a></p>
-
+                                <p class="card-text">Starting on <a href="#" class="btn btn-info">{{event.timestamp}}</a></p>
+                                <div id="room_id" hidden>
+                                  {{event.id}}
+                                </div>
+                                <div id="join-room">
+                                    <button class="btn btn-success" type="button">Join event</button>
+                                </div>
                             </div>
                           </div>
 
+                          <div class="card" id="event-feeback" style="display: none;">
+                            <span id="no-active-questions-span">No active questions right now! </span>
+                          </div>
 
                         </div>
-    <!-- <ul class="rooms">
-        {% for room in rooms %}
-            <li class="room-link" data-room-id="{{ room.id }}">{{ room }}</li>
-        {% empty %}
-            <p class="empty">No chat rooms defined. Maybe make some in the <a href="{% url 'admin:index' %}">admin</a>?</p>
-        {% endfor %}
-    </ul> -->
-<!--
-    <div id="chats">
-    </div> -->
 
 {% endblock %}

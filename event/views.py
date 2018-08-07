@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from event.models import Event
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from event.forms import EventForm, NewQuestionForm
 from dashboard.views import view_dashboard
 import uuid
+from event.models import Event, Question, Choice
+
 # Create your views here.
 
 

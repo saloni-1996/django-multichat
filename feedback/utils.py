@@ -28,7 +28,7 @@ def get_room_or_error(room_id, user):
         # raise ClientError("USER_HAS_TO_LOGIN")
     # Find the room they requested (by ID)
     try:
-        room = Room.objects.get(pk=room_id)
+        room = Room.objects.get(title=room_id)
     except Room.DoesNotExist:
         raise ClientError("ROOM_INVALID")
     # Check permissions
