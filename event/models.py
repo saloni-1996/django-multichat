@@ -15,6 +15,8 @@ class Event(models.Model):
 
 class QuestionType(models.Model):
     question_type = models.CharField(max_length=100)
+    def __str__(self):
+        return self.question_type
 
 
 class Question(models.Model):
