@@ -1,47 +1,147 @@
-{% load staticfiles %}
 <!DOCTYPE html>
-<html>
+{% load static %}
+
+<html lang="en">
+
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png"> -->
     <title>{% block title %}{% endblock %}</title>
-    <meta charset="UTF-8">
-     <link rel="stylesheet" href="{% static 'assets/plugin/bootstrap/css/bootstrap.min.css' %}" />
-    <!-- <link rel="stylesheet" href="{% static 'main.css' %}" />
-     -->
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'assets/plugins/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+  <link href="{% static 'assets/css/pages/dashboard1.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
     {% block extra_head %}{% endblock %}
+  <link href="{% static 'assets/css/colors/default-dark.css' id='theme' %}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
-<body>
-    <header>
-        <h1>{% block header_text %}{% endblock %}</h1>
-        {% if user.is_authenticated %}
-            <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-         <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-             Bootstrap
-        </a>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ user.username }}
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Logged In:{{ user.username }}">
-                    <a class="dropdown-item" href="{% url 'auth_password_reset' %}">Change Password</a>
-                    <a class="dropdown-item" href="{% url 'auth_logout' %}">Logout</a>
-                    
+
+<body class="fix-header card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Admin Pro</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+
+                                    <li>
+                                        <span class="text-lead">BharDeFeedback</span>
+                                    </li>
+                                
+
+                                            </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Language -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-in"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right animated bounceInDown"> <a class="dropdown-item" href="index.html#"><i class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="index.html#"><i class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item" href="index.html#"><i class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="index.html#"><i class="flag-icon flag-icon-de"></i> Dutch</a> </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-text">
+                                                <h4>{{user.username}}</h4>
+                                                <p class="text-muted">{{user.email}}</p>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{% url 'index' %}"><i class="ti-user"></i> Home</a></li>
+                                    <li><a href="{% url 'auth_password_change' %}"><i class="ti-wallet"></i> Change Password</a></li>
+
+                                    <li><a href="{% url 'auth_logout' %}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Horizontal navbar and right sidebar toggle -->
+            <!-- ============================================================== -->
+            
+                {% block content %}{% endblock %}
+                {% block extra_body %}{% endblock %}
+                <div class="container-fluid r-aside">
+
+                    <div class="right-sidebar">
+                        <div class="slimscrollright">
+                            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                            <div class="r-panel-body">
+                              Right panel
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer"> © 2018 BharDeFeedback</footer>
             </div>
-
-        </nav>
-        {% endif %}
-    </header>
-    <section>
-       {% block content %}
-        {% endblock %}
-    </section>
-    {% block extra_body %}{% endblock %}
-
-     {% block scripts%}{% endblock%}
-     <script src="{% static '/assets/plugin/jquery/jquery.min.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        </div>
+        <script src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
+        <!-- Bootstrap popper Core JavaScript -->
+        <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="{% static 'assets/js/perfect-scrollbar.jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/custom.min.js' %}"></script>
+        {% block scripts%}{% endblock%}
 </body>
+
 </html>

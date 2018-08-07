@@ -1,21 +1,57 @@
-{% extends "base.html" %} {% load i18n %}
- {% block title %}{% trans "Register for an account" %}{% endblock %} {% block content %}
-<form method="post" action="">
-	{% csrf_token %}
-    <p class="required">
-        <label class="required" for="id_username">Username:</label>
-        <input type="text" name="username" maxlength="150" autofocus required id="id_username" />
-        <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
-    <p class="required">
-        <label class="required" for="id_email">E-mail:</label>
-        <input type="email" name="email" required id="id_email" />
-    </p>
-    <p class="required">
-        <input type="password" name="password1" required id="id_password1" value="{{user.idf}}" hidden /> </p>
-    <p class="required">
-        <input type="password" name="password2" required id="id_password2" value="{{user.idf}}" hidden/></p>
-
-    <input type="submit" value="Submit" />
+{% extends "base.html" %} {% load static %} {% load i18n %} {% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/pages/login-register-lock.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}"> {% endblock %} {% block content %} {% if user.is_authenticated %}
+<div id="particles-js" style="width:100%; height=100%; background-color: #ffffff;">
+    <div class="login-register">
+        <div class="login-box card">
+            <div class="card-body">
+                <form class="form-horizontal form-material" action="." method="post">
+                    {% csrf_token %}
+                    <h3 class="box-title m-b-20">Register New User</h3>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="email" name="email" id="id_email" required="" placeholder="Email"> </div>
+                        <div>
+                            <div class="form-group">
+                                <p class="required">
+                                    <input type="password" name="password1" required id="id_password1" value="{{user.idf}}" hidden /> </p>
+                            </div>
+                            <div class="form-group">
+                                <p class="required">
+                                    <input type="password" name="password2" required id="id_password2" value="{{user.idf}}" hidden/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group text-center" style="margin:10px;">
+                            <div class="col-xs-12 p-b-20">
+                                <input class="btn btn-info btn-rounded" type="submit" value="Submit">
+                            </div>
+                        </div>
+                </form>
+                <!-- <div class="form-group">
+                <div class="col-sm-12 text-center">
+                    Don't have an account? <a href="{% url 'registration_register' %}" class="text-info m-l-5"><b>Sign Up</b></a>
+                </div>
+            </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>Logged in</p>
+    {% endif %} }
+    <!-- <form method="post" action=".">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="{% trans 'Log in' %}" />
+    <input type="hidden" name="next" value="{{ next }}" />
 </form>
-{% endblock %} {% comment %} **registration/registration_form.html** Used to show the form users will fill out to register. By default, has the following context: ``form`` The registration form. This will be an instance of some subclass of ``django.forms.Form``; consult `Django's forms documentation
-<http://docs.djangoproject.com/en/dev/topics/forms/>`_ for information on how to display this in a template. {% endcomment %}
+<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p> -->
+    {% endblock %} {% block scripts %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+    particlesJS.load('particles-js', "{% static 'assets/plugins/pjs.json' %}", function() {
+        console.log('callback - particles.js config loaded');
+    });
+    </script>
+    {% endblock %}

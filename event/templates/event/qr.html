@@ -1,0 +1,7 @@
+{% extends "base.html" %} {% load i18n %} {% block content %}
+{{ }}
+<img align="middle" src="https://api.qrserver.com/v1/create-qr-code/?data={{event_id}}&amp;size=300x300"
+                                         width="300"
+                                         height="300" />
+
+{% endblock %}

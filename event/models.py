@@ -13,32 +13,16 @@ class Event(models.Model):
     description = models.CharField(max_length=1000)
 
 
-class EventSession(models.Model):
-    """
-    Event Session model
-    """
-    session_name = models.CharField(max_length=200)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    # Event Presenter
-    presenter = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-
-
 class QuestionType(models.Model):
     question_type = models.CharField(max_length=100)
 
 
 class Question(models.Model):
-    """
-    is_active,is_mandatory if True will displayed on userpage and mandatory
-    """
     question_text = models.CharField(max_length=500, null=False)
-    # TODO: Replace class name for seesion in event/models.py.
-    session = models.ForeignKey(EventSession, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, null=False, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=False)
     is_mandatory = models.BooleanField(default=False)
     question_type = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
-
-
 
 
 class Choice(models.Model):

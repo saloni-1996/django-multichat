@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% load staticfiles %}
+{% load i18n %} {% block extra_head %}
+<!-- chartist CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugin/bootstrap/css/bootstrap.min.css' %}" />
+<link href="{% static  'assets/plugin/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/plugin/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+<!--c3 CSS -->
+<link href="{% static '/assets/plugin/c3-master/c3.min.css' %}" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<!-- Dashboard 1 Page CSS -->
+<link href="{% static 'css/pages/dashboard2.css' %}" rel="stylesheet">
+<!-- You can change the theme colors from here -->
+<link href="{% static 'css/colors/default-dark.css' %}" id="theme" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+{% endblock %} {% block content %}
+<a href="{% url 'add_question' event_id %}">Add Questions</a>
+{% endblock %} {% block scripts%}
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{% static 'js/perfect-scrollbar.jquery.min.js' %}"></script>
+<!--Wave Effects -->
+<script src="{% static 'js/waves.js' %}"></script>
+<!--Menu sidebar -->
+<script src="{% static 'js/sidebarmenu.js' %}"></script>
+<!--Custom JavaScript -->
+<script src="{% static 'js/custom.min.js' %}"></script>
+<script src="{% static 'js/sidebar.min.js' %}"></script>
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<script src="{% static '/assets/plugin/chartist-js/dist/chartist.min.js' %}"></script>
+<script src="{% static '/assets/plugin/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+<!--c3 JavaScript -->
+<script src="{% static '/assets/plugin/d3/d3.min.js' %}"></script>
+<script src="{% static '/assets/plugin/c3-master/c3.min.js' %}"></script>
+<!-- Chart JS -->
+<script src="{% static 'js/dashboard2.js' %}"></script>
+<!-- ============================================================== -->
+<!-- Style switcher -->
+<!-- ============================================================== -->
+<script src="{% static '/assets/plugin/styleswitcher/jQuery.style.switcher.js' %}"></script>
+{% endblock%}

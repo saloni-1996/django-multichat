@@ -39,7 +39,7 @@ class RegistrationView(FormView):
 
         """
         if ACCOUNT_AUTHENTICATED_REGISTRATION_REDIRECTS:
-            if self.request.user.is_authenticated and self.request.user.is_superuser:
+            if self.request.user.is_authenticated and (self.request.user.is_superuser or self.request.user.is_ecoord):
                 return super(RegistrationView, self).dispatch(request, *args, **kwargs)
             else:
                 raise Exception(("Only Admin can add new users."))
