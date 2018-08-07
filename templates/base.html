@@ -14,16 +14,17 @@
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png"> -->
     <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap Core CSS -->
-    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet">
 
-    <link href="{% static 'assets/plugins/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/plugins/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
     <!-- Custom CSS -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
-  <link href="{% static 'assets/css/pages/dashboard1.css' %}" rel="stylesheet">
+ <link href="{% static '/assets/css/pages/dashboard1.css' %}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     {% block extra_head %}{% endblock %}
-  <link href="{% static 'assets/css/colors/default-dark.css' id='theme' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/colors/default-dark.css' id='theme' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,7 +33,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header card-no-border">
+<body class="fix-header fix-sidebar card-no-border">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -49,6 +50,7 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
+        {% if user.is_authenticated %}
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-collapse">
@@ -110,10 +112,15 @@
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
+        
+    
+        {% endif%}
+
+<div id="page-wrapper" style="padding-top:100px;">
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <!-- {# <div class="page-wrapper"> #} -->
             <!-- ============================================================== -->
             <!-- Horizontal navbar and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -121,7 +128,7 @@
                 {% block content %}{% endblock %}
                 {% block extra_body %}{% endblock %}
                 <div class="container-fluid r-aside">
-
+                
                     <div class="right-sidebar">
                         <div class="slimscrollright">
                             <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
@@ -130,7 +137,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <footer class="footer"> © 2018 BharDeFeedback</footer>
             </div>
         </div>
@@ -140,6 +147,10 @@
         <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
         <!-- slimscrollbar scrollbar JavaScript -->
         <script src="{% static 'assets/js/perfect-scrollbar.jquery.min.js' %}"></script>
+        <!--Wave Effects -->
+        <script src="{% static '/assets/js/waves.js' %}"></script>
+        <!--Menu sidebar -->
+        <script src="{% static '/assets/js/sidebarmenu.js' %}"></script>
         <script src="{% static 'assets/js/custom.min.js' %}"></script>
         {% block scripts%}{% endblock%}
 </body>

@@ -1,7 +1,12 @@
 {% extends "base.html" %} {% load i18n %} {% block content %}
-{{ }}
-<img align="middle" src="https://api.qrserver.com/v1/create-qr-code/?data={{event_id}}&amp;size=300x300"
-                                         width="300"
-                                         height="300" />
+<div class="container ">
+	<div class="row m-4">
+	<h2>{{event_details.event_name}}</h2>
+    <div class="col-12">
+        <img align="middle" src="https://api.qrserver.com/v1/create-qr-code/?data=https://localhost/event/amp{{event_details.event_name}}{{eventuuid}}{{event_details.pk}}&amp;size=300x300" />
+    </div>
+</div>
+	
+</div>
 
 {% endblock %}
