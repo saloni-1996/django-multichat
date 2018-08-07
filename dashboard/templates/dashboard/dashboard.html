@@ -38,7 +38,6 @@
                     <li><a href="#">Calendar</a></li>
                     <li><a href="#">Calendar</a></li>
                     <li><a href="#">Calendar</a></li>
-                    
                 </ul>
                 <!-- Left navbar-header end -->
             </div>
@@ -51,113 +50,189 @@
     <!-- Horizontal navbar and right sidebar toggle -->
     <!-- ============================================================== -->
     <div class="row hdr-nav-bar">
-            <div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Horizontal navbar and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid r-aside">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Dashboard 1</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard 1</li>
+                </ol>
+            </div>
+            <div class="">
                 <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
             </div>
         </div>
         <!-- ============================================================== -->
-        <!-- End Horizontal navbar and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid r-aside">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Dashboard 1</h3>
-                </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard 1</li>
-                    </ol>
-                </div>
-                <div class="">
-                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
-                                <div class="align-self-center">
-                                    <h6 class="text-muted m-t-10 m-b-0">Total Income</h6>
-                                    <h2 class="m-t-0">953,000</h2></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
-                                <div class="align-self-center">
-                                    <h6 class="text-muted m-t-10 m-b-0">Total Expense</h6>
-                                    <h2 class="m-t-0">236,000</h2></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
-                                <div class="align-self-center">
-                                    <h6 class="text-muted m-t-10 m-b-0">Total Assets</h6>
-                                    <h2 class="m-t-0">987,563</h2></div>
-                            </div>
+        <!-- End Bread crumb and right sidebar toggle -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
+                            <div class="align-self-center">
+                                <h6 class="text-muted m-t-10 m-b-0">Total Income</h6>
+                                <h2 class="m-t-0">953,000</h2></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- Projects of the month -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div>
-                                    <h4 class="card-title"><span class="lstick"></span>List of Questions</h4></div>
-                                <div class="ml-auto">
-                                    <a href="{% url 'add_question' event_id %}"><button class=" btn btn-rounded btn-info">Add Question</button></a>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
+                            <div class="align-self-center">
+                                <h6 class="text-muted m-t-10 m-b-0">Total Expense</h6>
+                                <h2 class="m-t-0">236,000</h2></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
+                            <div class="align-self-center">
+                                <h6 class="text-muted m-t-10 m-b-0">Total Assets</h6>
+                                <h2 class="m-t-0">987,563</h2></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Projects of the month -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div>
+                                <h4 class="card-title"><span class="lstick"></span>To Do list</h4>
+                            </div>
+                            <div class="ml-auto">
+                                <button id="addquestion" class="pull-right btn btn-circle btn-success" data-toggle="modal" data-target="#myModal"><i class="ti-plus"></i></button>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- To do list widgets -->
+                        <!-- ============================================================== -->
+                        <div class="to-do-widget m-t-20">
+                            <!-- .modal for add task -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add Task</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="" class="form-material">
+                                                {% csrf_token %} {% for field in form %}
+                                                <div class="form-group">
+                                                    {{ field.errors }} {{ field.label_tag }} {{ field }}
+                                                </div>
+                                                {% endfor %}
+                                                <input type="submit" value="Submit" />
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
                                 </div>
+                                <!-- /.modal-dialog -->
                             </div>
-                            
-                            </div>
+                            <!-- /.modal -->
+                            <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info m-b-10">
+                                        <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
+                                        <label for="inputSchedule" class=""> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</span> <span class="label label-rounded label-danger pull-right">Today</span></label>
+                                    </div>
+                                    <ul class="assignedto">
+                                        <li><img src="../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
+                                        <li><img src="../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
+                                        <li><img src="../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
+                                        <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                                        <label for="inputBook" class=""> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</span><span class="label label-primary label-rounded pull-right">1 week </span> </label>
+                                    </div>
+                                    <div class="item-date"> 26 jun 2017</div>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
+                                        <label for="inputCall" class=""> <span>Give Purchase report to</span> <span class="label label-info label-rounded pull-right">Yesterday</span> </label>
+                                    </div>
+                                    <ul class="assignedto">
+                                        <li><img src="../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
+                                        <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item" data-role="task">
+                                    <div class="checkbox checkbox-info">
+                                        <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
+                                        <label for="inputForward" class=""> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</span> <span class="label label-warning label-rounded pull-right">2 weeks</span> </label>
+                                    </div>
+                                    <div class="item-date"> 26 jun 2017</div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endblock %} {% block scripts%}
-            <script src="{% static '/assets/js/sidebar.min.js' %}"></script>
-            <!-- ============================================================== -->
-            <!-- This page plugins -->
-            <!-- ============================================================== -->
-            <!--sparkline JavaScript -->
-            <script src="{% static '/assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
-            <!--morris JavaScript -->
-            <script src="{% static '/assets/plugins/chartist-js/dist/chartist.min.js' %}"></script>
-            <script src="{% static '/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
-            <!--c3 JavaScript -->
-            <script src="{% static '/assets/plugins/d3/d3.min.js' %}"></script>
-            <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
-            <!-- Popup message jquery -->
-            <script src="{% static '/assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
-            <!-- Chart JS -->
-            <script src="{% static '/assets/js/dashboard1.js' %}"></script>
-            <!-- ============================================================== -->
-            <!-- Style switcher -->
-            <!-- ============================================================== -->
-            <script src="{% static '/assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
-            {% endblock%}
+        </div>
+    </div>
+    <div class="ml-auto">
+        <a href="{% url 'add_question' event_id %}">
+            <button class=" btn btn-rounded btn-info">Add Question</button>
+        </a>
+    </div>
+    {% endblock %} {% block scripts%}
+    <script src="{% static '/assets/js/sidebar.min.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--sparkline JavaScript -->
+    <script src="{% static '/assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+    <!--morris JavaScript -->
+    <script src="{% static '/assets/plugins/chartist-js/dist/chartist.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <!--c3 JavaScript -->
+    <script src="{% static '/assets/plugins/d3/d3.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
+    <!-- Popup message jquery -->
+    <script src="{% static '/assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
+    <!-- Chart JS -->
+    <script src="{% static '/assets/js/dashboard1.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{% static '/assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
+    {% endblock%}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from event.models import Event
+from event.models import Event ,Question
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from event.forms import EventForm, NewQuestionForm
@@ -82,12 +82,25 @@ def show_event_qr(request, event_id):
 
 @login_required
 def view_dashboard(request, event_id):
+    questions_list = Event.question_set.get(pk= event_id)
+    print(questions_list)
     return HttpResponseRedirect(reverse('view_dashboard'))
 
 
 @login_required
 def add_question(request, event_id):
     new_question_form = NewQuestionForm()
-    # if request.method == 'POST':
+    if request.method == 'POST':
+        new_question = NewQuestionForm(request.POST)
+        if new_question.is_valid():
+            question_text = new_question.cleaned_data['question_text']
+            is_active = new_question.cleaned_data['is_active']
+            is_mandatory = new_question.cleaned_data['is_mandatory']
+            question_type = new_question.cleaned_data['question_type']
+            event = event_id
+            Question.objects.create(question_text = question_text, event_id = event, is_active=is_active, is_mandatory=is_mandatory,
+                question_type=question_type)
+            print("question save")
+            return HttpResponseRedirect(reverse('view_dashboard',kwargs={'event_id':event_id}))
 
     return render(request, 'event/addquestion.html', {'form': new_question_form})
