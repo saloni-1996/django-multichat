@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^(?P<event_id>\d+)/qr/$',event_views.show_event_qr, name='view_event_qr'),
 	url(r'^(?P<event_id>\d+)/dashboard/$',dashboard_views.view_dashboard, name='view_dashboard'),
 	url(r'^(?P<event_id>\d+)/addquestion/$',event_views.add_question, name='add_question'),
+	url(r'^toggleactive/(?P<question_id>\d+)$',event_views.toggle_status, name='toggle_status'),
 ]

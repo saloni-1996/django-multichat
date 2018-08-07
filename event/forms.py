@@ -10,6 +10,6 @@ class EventForm(forms.Form):
 
 class NewQuestionForm(forms.Form):
 	question_text = forms.CharField(max_length=200)
-	is_active = forms.BooleanField(widget=forms.CheckboxInput)
-	is_mandatory = forms.BooleanField(widget=forms.CheckboxInput)
+	is_active = forms.BooleanField(widget=forms.CheckboxInput, required=False)
+	is_mandatory = forms.BooleanField(widget=forms.CheckboxInput, required=False)
 	question_type = forms.ModelChoiceField(queryset = QuestionType.objects.all())

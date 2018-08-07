@@ -153,12 +153,75 @@ $(function() {
 
 
 });
-$("#addquestion").on("click", function() {
 
-  $.ajax{
-    type:'GET'
-    url: ''
-  }
+//function to add new question to the database
+function create_post() {
+    let checkVal;
+    if($("#id_is_active").is(':checked')){
+         checkVal = "True";
+    }
+    else{
+         checkVal = "False";
+    }
+    if($("#id_is_mandatory").is(':checked')){
+         mandatoryVal = "True";
+    }
+    else{
+         mandatoryVal = "False";
+    }
+    console.log("create post is working!")
+    console.log(checkVal) // sanity check
+    $.ajax({
+      url:"/event/1/addquestion/",
+      type:"POST",
+      data:{
+        'csrfmiddlewaretoken':$("[name=csrfmiddlewaretoken]").val(),
+        'question_name': $("[name=question_text]").val(),
+        'is_active': checkVal,
+        'is_mandatory': mandatoryVal,
+        'question_type': $("[name=question_type]").val()
+      }
+    })
+    
+};
 
+//function to handle all the manual js
+$(document).ready(function() {
+    
+   $('#addquestion').click(function(event){
+       event.preventDefault();
+       create_post();
+   });
+
+
+   $('input[name=question-checkbox]').change(function(){
+    if($(this).is(':checked')) {
+         id = $(this).attr('id')
+         $.ajax({
+          url: "/event/toggleactive/" +id,
+          type: "POST",
+          data:{ question_id : id ,
+          'csrfmiddlewaretoken' : $("[name=csrfmiddlewaretoken]").val()} ,
+          success : function(json) {
+                      console.log(json); // log the returned json to the console
+                      console.log("success"); // another sanity check
+                  }
+
+         })
+    } else {
+       
+         id = $(this).attr('id')
+         $.ajax({
+          url: "/event/toggleactive/" +id,
+          type: "POST",
+          data:{ question_id : id ,
+          'csrfmiddlewaretoken' : $("[name=csrfmiddlewaretoken]").val()} ,
+          success : function(json) {
+                      console.log(json); // log the returned json to the console
+                      console.log("success"); // another sanity check
+                  }
+         })
+    }
+});
 
 });

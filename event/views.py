@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from event.models import Event ,Question
+from event.models import Event, Question, QuestionType,Choice
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from event.forms import EventForm, NewQuestionForm
 from dashboard.views import view_dashboard
 import uuid
+import json
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -82,25 +84,74 @@ def show_event_qr(request, event_id):
 
 @login_required
 def view_dashboard(request, event_id):
-    questions_list = Event.question_set.get(pk= event_id)
+    print("eventcall")
+    questions_list = Event.question_set.get(pk=event_id)
     print(questions_list)
-    return HttpResponseRedirect(reverse('view_dashboard'))
+    return HttpResponseRedirect(reverse('view_dashboard', kwargs={'questions_list': questions_list}))
 
 
 @login_required
 def add_question(request, event_id):
     new_question_form = NewQuestionForm()
     if request.method == 'POST':
-        new_question = NewQuestionForm(request.POST)
-        if new_question.is_valid():
-            question_text = new_question.cleaned_data['question_text']
-            is_active = new_question.cleaned_data['is_active']
-            is_mandatory = new_question.cleaned_data['is_mandatory']
-            question_type = new_question.cleaned_data['question_type']
-            event = event_id
-            Question.objects.create(question_text = question_text, event_id = event, is_active=is_active, is_mandatory=is_mandatory,
-                question_type=question_type)
-            print("question save")
-            return HttpResponseRedirect(reverse('view_dashboard',kwargs={'event_id':event_id}))
+        # print(request.POST.get('question_name'))
+        # print(request.POST.get('is_active'))
+        question_type = request.POST.get('question_type')
+        # print(question_type)
+        question_type_name = QuestionType.objects.get(pk=question_type)
+        # print(question_type_name)
+        question_text = request.POST.get('question_name')
+        is_active = request.POST.get('is_active')
+        is_mandatory = request.POST.get('is_mandatory')
+        #question_type_ = question_type_name
+        event = event_id
+        question = Question.objects.create(question_text=question_text, event_id=event, is_active=is_active, is_mandatory=is_mandatory,
+            question_type=question_type_name)
+
+
+        form_data= request.POST
+
+            # If the question type is single or multiple save the choice with choice text that can be accessed from post params ("choice_(some int)")
+        if question_type_name == "Single Choice" or question_type_name == "Multiple Choice":
+            for key in form_data:
+                print(key)
+                print(form_data[key])
+                if key.startswith('choice'):
+                        # create a choice
+                    choice = Choice(choice_text=form_data[key], question= question)
+                    choice.save()
+        else:
+            # create choices for rating
+            # 1 star corresponds to choice with text 1
+            # 2 star corresponds to choice with text 2
+            # and so on... till 5 star
+            for i in range(5):
+            # create a choice
+                choice = Choice(choice_text=str(i+1), question=question)
+                choice.save()
+
+
+        print("question save")
+        return HttpResponseRedirect(reverse('view_dashboard', kwargs={'event_id': event_id}))
 
     return render(request, 'event/addquestion.html', {'form': new_question_form})
+
+
+def toggle_status(request, question_id):
+    print("toggle")
+    print(request.method)
+    if request.method == 'POST' and request.is_ajax():
+        print("accesd")
+        print(question_id)
+        try:
+            question = Question.objects.get(pk=question_id)
+            if question.is_active:
+                Question.objects.filter(pk=question_id).update(is_active=False)
+            else:
+                Question.objects.filter(pk=question_id).update(is_active=True)
+
+            return JsonResponse({'status': 'Success', 'msg': 'save successfully'})
+        except Question.DoesNotExist:
+            return JsonResponse({'status': 'Fail', 'msg': 'Object does not exist'})
+    else:
+        return JsonResponse({'status': 'Fail', 'msg': 'Not a valid request'})

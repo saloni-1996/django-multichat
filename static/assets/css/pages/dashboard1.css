@@ -18,6 +18,14 @@ File: scss
 /*******************
  Right side panel
 *******************/
+/* Checkbox Display*/
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: 200px;
+    opacity: 1;
+}
 .r-aside {
   padding-right: 500px; }
 

@@ -127,10 +127,10 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div>
-                                <h4 class="card-title"><span class="lstick"></span>To Do list</h4>
+                                <h4 class="card-title"><span class="lstick"></span>Question List</h4>
                             </div>
                             <div class="ml-auto">
-                                <button id="addquestion" class="pull-right btn btn-circle btn-success" data-toggle="modal" data-target="#myModal"><i class="ti-plus"></i></button>
+                                <button class="pull-right btn btn-circle btn-success" data-toggle="modal" data-target="#myModal"><i class="ti-plus"></i></button>
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -146,18 +146,20 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="" class="form-material">
+                                            <form method="post" action="" class="form-material" id="addquestionform">
                                                 {% csrf_token %} {% for field in form %}
                                                 <div class="form-group">
                                                     {{ field.errors }} {{ field.label_tag }} {{ field }}
                                                 </div>
                                                 {% endfor %}
-                                                <input type="submit" value="Submit" />
+                                                <!--Add choices dynamically-->
+                                                <div id="choice_div" onclick="">
+                                                </div>
+                                                <!--                                                 <input type="submit" value="Submit" />
+                                             -->
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" value="Submit" class="btn btn-success" id="addquestion" data-dismiss="modal">Submit</button>
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -166,42 +168,13 @@
                             </div>
                             <!-- /.modal -->
                             <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox checkbox-info m-b-10">
-                                        <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
-                                        <label for="inputSchedule" class=""> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</span> <span class="label label-rounded label-danger pull-right">Today</span></label>
-                                    </div>
-                                    <ul class="assignedto">
-                                        <li><img src="../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
-                                        <li><img src="../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                                        <li><img src="../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                        <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                    </ul>
+                                {%for i in questions_list %}
+                                <li>
+                                    <h5>{{i.question_text}}</h5> {{i.pk}} {%if i.is_active %}
+                                    <input type="checkbox" id="{{i.pk}}" name="question-checkbox" checked> {%else%}
+                                    <input type="checkbox" id="{{i.pk}}" name="question-checkbox" unchecked>
                                 </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox checkbox-info">
-                                        <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
-                                        <label for="inputBook" class=""> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</span><span class="label label-primary label-rounded pull-right">1 week </span> </label>
-                                    </div>
-                                    <div class="item-date"> 26 jun 2017</div>
-                                </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox checkbox-info">
-                                        <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
-                                        <label for="inputCall" class=""> <span>Give Purchase report to</span> <span class="label label-info label-rounded pull-right">Yesterday</span> </label>
-                                    </div>
-                                    <ul class="assignedto">
-                                        <li><img src="../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                        <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                    </ul>
-                                </li>
-                                <li class="list-group-item" data-role="task">
-                                    <div class="checkbox checkbox-info">
-                                        <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
-                                        <label for="inputForward" class=""> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</span> <span class="label label-warning label-rounded pull-right">2 weeks</span> </label>
-                                    </div>
-                                    <div class="item-date"> 26 jun 2017</div>
-                                </li>
+                                {%endif%} {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -231,6 +204,7 @@
     <script src="{% static '/assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
     <!-- Chart JS -->
     <script src="{% static '/assets/js/dashboard1.js' %}"></script>
+    <script src="{% static 'event/js/editevent.js' %}"></script>
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
