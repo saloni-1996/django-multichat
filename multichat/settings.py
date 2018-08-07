@@ -146,17 +146,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
-]
+
+STATIC_URL = '/static/'
+
+if DEBUG:
+    STATICFILES_DIRS = (
+        os.path.join("static"),
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
 
 AUTH_USER_MODEL = 'fil_auth.CustomUser'
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 REGISTRATION_FORM = 'fil_auth.forms.MyRegForm'
 
-STATIC_URL = '/static/'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
