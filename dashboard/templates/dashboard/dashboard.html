@@ -7,41 +7,22 @@
 <link href="{% static '/assets/plugins/c3-master/c3.min.css' %}" rel="stylesheet">
 <!--Toaster Popup message CSS -->
 <link href="{% static '/assets/plugins/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/plugins/bootstrap-switch/bootstrap-switch.min.css' %}" rel="stylesheet">
+
 <!-- Custom CSS -->
 <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
+<link href="{% static '/assets/css/pages/bootstrap-switch.css' %}" rel="stylesheet">
 <!-- Dashboard 1 Page CSS -->
 <link href="{% static '/assets/css/pages/dashboard1.css' %}" rel="stylesheet"> {% endblock %} {% block content %}
 <div class="side-mini-panel">
     <ul class="mini-nav">
-        <div class="togglediv hidden-sm-down">
-            <a href="javascript:void(0)" id="togglebtn"><i class="ti-menu"></i></a>
-        </div>
-        <li class="selected">
+       <!--  <div class="togglediv hidden-sm-down">
+           <a href="javascript:void(0)" id="togglebtn"><i class="ti-menu"></i></a>
+       </div> -->
+        <li class="">
             <a href="javascript:void(0)"><i class="mdi mdi-gauge"></i></a>
-            <div class="sidebarmenu">
-                <!-- Left navbar-header -->
-                <h3 class="menu-title">Dashboard</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="index.html">Minimal</a></li>
-                    <li><a href="index2.html">Demographical</a></li>
-                </ul>
-                <!-- Left navbar-header end -->
-            </div>
         </li>
-        <li class=""><a href="javascript:void(0)"><i class="mdi mdi-bullseye"></i></a>
-            <div class="sidebarmenu">
-                <!-- Left navbar-header -->
-                <h3 class="menu-title">Apps</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                </ul>
-                <!-- Left navbar-header end -->
-            </div>
-        </li>
+    
         <!-- Left navbar-header end -->
     </ul>
 </div>
@@ -167,26 +148,51 @@
                                 <!-- /.modal-dialog -->
                             </div>
                             <!-- /.modal -->
-                            <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
-                                {%for i in questions_list %}
-                                <li>
-                                    <h5>{{i.question_text}}</h5> {{i.pk}} {%if i.is_active %}
-                                    <input type="checkbox" id="{{i.pk}}" name="question-checkbox" checked> {%else%}
-                                    <input type="checkbox" id="{{i.pk}}" name="question-checkbox" unchecked>
-                                </li>
-                                {%endif%} {% endfor %}
-                            </ul>
+                            <div class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10%">#</th>
+                                                <th style="width: 70%">Question</th>
+                                                <th style="width: 30%">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           {%for i in questions_list %} 
+                                            <tr>
+                                                <td>{{ i.pk}}</td>
+                                                <td> {{i.question_text}}</td>
+                                                <td><div class="m-b-30 bt-switch">
+
+                                     {%if i.is_active %}
+
+                                    <input type="checkbox"  data-handle-width="150"   data-label-width="0" checked data-on-color="warning" data-off-color="danger" data-on-text="Active" data-off-text="Inactive" id="{{i.pk}}" name="question-checkbox" checked>
+                                    
+                                   
+                                     {%else%}
+                                    <input type="checkbox"  data-handle-width="150"   data-label-width="0"   data-on-color="warning" data-off-color="danger" data-on-text="Active" data-off-text="Inactive" id="{{i.pk}}" name="question-checkbox" unchecked>
+
+                                {%endif%} 
+                                    </div></td>
+                                            </tr>
+                                            {%endfor%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="ml-auto">
+    <!-- <div class="ml-auto">
         <a href="{% url 'add_question' event_id %}">
             <button class=" btn btn-rounded btn-info">Add Question</button>
         </a>
-    </div>
+    </div> -->
     {% endblock %} {% block scripts%}
     <script src="{% static '/assets/js/sidebar.min.js' %}"></script>
     <!-- ============================================================== -->
@@ -202,7 +208,7 @@
     <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
     <!-- Popup message jquery -->
     <script src="{% static '/assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
-    <!-- Chart JS -->
+     <script src="{% static '/assets/plugins/bootstrap-switch/bootstrap-switch.min.js' %}"></script>
     <script src="{% static '/assets/js/dashboard1.js' %}"></script>
     <script src="{% static 'event/js/editevent.js' %}"></script>
     <!-- ============================================================== -->

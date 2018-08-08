@@ -147,10 +147,12 @@ def toggle_status(request, question_id):
             question = Question.objects.get(pk=question_id)
             if question.is_active:
                 Question.objects.filter(pk=question_id).update(is_active=False)
+                return JsonResponse({'status': 'Success', 'msg': 'Fasle successfully'})
             else:
                 Question.objects.filter(pk=question_id).update(is_active=True)
+                return JsonResponse({'status': 'Success', 'msg': 'true successfully'})
 
-            return JsonResponse({'status': 'Success', 'msg': 'save successfully'})
+            #return JsonResponse({'status': 'Success', 'msg': 'save successfully'})
         except Question.DoesNotExist:
             return JsonResponse({'status': 'Fail', 'msg': 'Object does not exist'})
     else:

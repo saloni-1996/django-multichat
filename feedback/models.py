@@ -2,8 +2,7 @@ import json
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
 from channels import Group
-
-from .settings import MSG_TYPE_MESSAGE
+from feedback.settings import MSG_TYPE_MESSAGE
 
 
 @python_2_unicode_compatible
@@ -23,13 +22,13 @@ class Room(models.Model):
         Returns the Channels Group that sockets should subscribe to to get sent
         messages as they are generated.
         """
-        return Group("room-%s" % self.id)
+        return Group("room-%s" % self.title)
 
     def send_message(self, message, user, msg_type=MSG_TYPE_MESSAGE):
         """
         Called to send a message to the room on behalf of a user.
         """
-        final_msg = {'room': str(self.id), 'message': message,
+        final_msg = {'room': str(self.title), 'message': message,
                      'username': user.username, 'msg_type': msg_type}
 
         # Send out the message to everyone in the room

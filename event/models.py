@@ -1,11 +1,13 @@
 from django.db import models
 from fil_auth.models import CustomUser
-
+import uuid
 # Create your models here.
+
 class Event(models.Model):
     """
     Events Model
     """
+    # id = models.IntegerField(primary_key=True, max_length=64, verbose_name=u"Event Id")
     event_name = models.CharField(max_length=200)
     timestamp = models.DateTimeField()
     duration = models.IntegerField()

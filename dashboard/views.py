@@ -21,3 +21,30 @@ def view_dashboard(request, event_id):
     # add try catch part
     questions_list = event.question_set.all()
     return render(request, 'dashboard/dashboard.html', {'event_id': event_id, 'questions_list': questions_list ,'form': new_question_form})
+
+@login_required
+def session_data(request, event_id):
+    custom_user = request.user
+
+    event = custom_user.event_set.get(pk=event_id)
+
+    session_response = {}
+
+    question_list = []
+    for question in event.question_set.all():
+        question_obj = {'question_id': question.id, 'question': question.question_text,
+                        'question_type': question.question_type.question_type}
+
+        option_array = []
+
+        for choice in question.choice_set.all():
+            choice_obj = {'votes': choice.vote_count, 'text': choice.choice_text, 'id': choice.id}
+            option_array.append(choice_obj)
+
+        question_obj['options'] = option_array
+
+        question_list.append(question_obj)
+
+    session_response['questions'] = question_list
+
+    return JsonResponse(session_response, safe=False)
