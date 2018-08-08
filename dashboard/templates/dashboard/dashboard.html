@@ -160,4 +160,28 @@
             <!-- Style switcher -->
             <!-- ============================================================== -->
             <script src="{% static '/assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
-            {% endblock%}
+
+    <script>
+
+        var questions_data;
+        function executeQuery() {
+            $.ajax({
+            url: 'questions',
+            success: function(data) {
+              // add questions
+              questions_data = data;
+              console.log(questions_data['questions'][0]);
+            }
+            });
+            setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+        }
+
+        $(document).ready(function() {
+            // run the first time; all subsequent calls will take care of themselves
+            setTimeout(executeQuery, 1000);
+        });
+
+
+    </script>
+
+    {% endblock%}

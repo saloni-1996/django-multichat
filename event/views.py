@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from event.models import Event ,Question, Choice
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from event.forms import EventForm, NewQuestionForm
 from dashboard.views import view_dashboard
 import uuid
-from event.models import Event, Question, Choice
-
 # Create your views here.
 
 
@@ -83,12 +82,47 @@ def show_event_qr(request, event_id):
 
 @login_required
 def view_dashboard(request, event_id):
+    questions_list = Event.question_set.get(pk= event_id)
+    print(questions_list)
     return HttpResponseRedirect(reverse('view_dashboard'))
 
 
 @login_required
 def add_question(request, event_id):
     new_question_form = NewQuestionForm()
-    # if request.method == 'POST':
+    if request.method == 'POST':
+        new_question = NewQuestionForm(request.POST)
+        if new_question.is_valid():
+            question_text = new_question.cleaned_data['question_text']
+            is_active = new_question.cleaned_data['is_active']
+            is_mandatory = new_question.cleaned_data['is_mandatory']
+            question_type = new_question.cleaned_data['question_type']
+            event = event_id
+            question = Question.objects.create(question_text = question_text, event_id = event, is_active=is_active, is_mandatory=is_mandatory,
+                question_type=question_type)
+
+            form_data= request.POST
+
+            # If the question type is single or multiple save the choice with choice text that can be accessed from post params ("choice_(some int)")
+            if question_type.question_type == "Single Choice" or question_type.question_type == "Multiple Choice":
+                for key in form_data:
+                    print(key)
+                    print(form_data[key])
+                    if key.startswith('choice'):
+                        # create a choice
+                        choice = Choice(choice_text=form_data[key], question= question)
+                        choice.save()
+            else:
+                # create choices for rating
+                # 1 star corresponds to choice with text 1
+                # 2 star corresponds to choice with text 2
+                # and so on... till 5 star
+                for i in range(5):
+                    # create a choice
+                    choice = Choice(choice_text=str(i+1), question=question)
+                    choice.save()
+
+            print("question save")
+            return HttpResponseRedirect(reverse('view_dashboard',kwargs={'event_id':event_id}))
 
     return render(request, 'event/addquestion.html', {'form': new_question_form})

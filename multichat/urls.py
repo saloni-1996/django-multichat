@@ -7,6 +7,7 @@ from coordinator import urls as coord_urls
 from feedback import urls as feedback_urls
 from event import urls as event_urls
 from presenter import urls as persenter_urls
+from dashboard import urls as dashboard_urls
 
 
 urlpatterns = [
@@ -15,6 +16,7 @@ urlpatterns = [
     url(r'^admin/', include(admin_urls)),
     url(r'^feedback/', include(feedback_urls)),
     url(r'^coord/', include(coord_urls)),
+    url(r'^dashboard/', include(dashboard_urls)),
     url(r'^event/', include(event_urls)),
     url(r'^presenter/', include(persenter_urls)),
     url(r'^accounts/login/$', logout, name='login'),
