@@ -7,42 +7,22 @@
 <link href="{% static '/assets/plugins/c3-master/c3.min.css' %}" rel="stylesheet">
 <!--Toaster Popup message CSS -->
 <link href="{% static '/assets/plugins/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <link href="{% static '/assets/plugins/bootstrap-switch/bootstrap-switch.min.css' %}" rel="stylesheet">
+
 <!-- Custom CSS -->
 <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
+<link href="{% static '/assets/css/pages/bootstrap-switch.css' %}" rel="stylesheet">
 <!-- Dashboard 1 Page CSS -->
 <link href="{% static '/assets/css/pages/dashboard1.css' %}" rel="stylesheet"> {% endblock %} {% block content %}
 <div class="side-mini-panel">
     <ul class="mini-nav">
-        <div class="togglediv hidden-sm-down">
-            <a href="javascript:void(0)" id="togglebtn"><i class="ti-menu"></i></a>
-        </div>
-        <li class="selected">
+       <!--  <div class="togglediv hidden-sm-down">
+           <a href="javascript:void(0)" id="togglebtn"><i class="ti-menu"></i></a>
+       </div> -->
+        <li class="">
             <a href="javascript:void(0)"><i class="mdi mdi-gauge"></i></a>
-            <div class="sidebarmenu">
-                <!-- Left navbar-header -->
-                <h3 class="menu-title">Dashboard</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="index.html">Minimal</a></li>
-                    <li><a href="index2.html">Demographical</a></li>
-                </ul>
-                <!-- Left navbar-header end -->
-            </div>
         </li>
-        <li class=""><a href="javascript:void(0)"><i class="mdi mdi-bullseye"></i></a>
-            <div class="sidebarmenu">
-                <!-- Left navbar-header -->
-                <h3 class="menu-title">Apps</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    
-                </ul>
-                <!-- Left navbar-header end -->
-            </div>
-        </li>
+    
         <!-- Left navbar-header end -->
     </ul>
 </div>
@@ -51,137 +31,188 @@
     <!-- Horizontal navbar and right sidebar toggle -->
     <!-- ============================================================== -->
     <div class="row hdr-nav-bar">
-            <div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Horizontal navbar and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid r-aside">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Dashboard 1</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard 1</li>
+                </ol>
+            </div>
+            <div class="">
                 <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
             </div>
         </div>
         <!-- ============================================================== -->
-        <!-- End Horizontal navbar and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid r-aside">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Dashboard 1</h3>
-                </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard 1</li>
-                    </ol>
-                </div>
-                <div class="">
-                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
-                                <div class="align-self-center">
-                                    <h6 class="text-muted m-t-10 m-b-0">Total Income</h6>
-                                    <h2 class="m-t-0">953,000</h2></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
-                                <div class="align-self-center">
-                                    <h6 class="text-muted m-t-10 m-b-0">Total Expense</h6>
-                                    <h2 class="m-t-0">236,000</h2></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
-                                <div class="align-self-center">
-                                    <h6 class="text-muted m-t-10 m-b-0">Total Assets</h6>
-                                    <h2 class="m-t-0">987,563</h2></div>
-                            </div>
+        <!-- End Bread crumb and right sidebar toggle -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
+                            <div class="align-self-center">
+                                <h6 class="text-muted m-t-10 m-b-0">Total Income</h6>
+                                <h2 class="m-t-0">953,000</h2></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- Projects of the month -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex no-block">
-                                <div>
-                                    <h4 class="card-title"><span class="lstick"></span>List of Questions</h4></div>
-                                <div class="ml-auto">
-                                    <a href="{% url 'add_question' event_id %}"><button class=" btn btn-rounded btn-info">Add Question</button></a>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
+                            <div class="align-self-center">
+                                <h6 class="text-muted m-t-10 m-b-0">Total Expense</h6>
+                                <h2 class="m-t-0">236,000</h2></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span></div>
+                            <div class="align-self-center">
+                                <h6 class="text-muted m-t-10 m-b-0">Total Assets</h6>
+                                <h2 class="m-t-0">987,563</h2></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Projects of the month -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div>
+                                <h4 class="card-title"><span class="lstick"></span>Question List</h4>
+                            </div>
+                            <div class="ml-auto">
+                                <button class="pull-right btn btn-circle btn-success" data-toggle="modal" data-target="#myModal"><i class="ti-plus"></i></button>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- To do list widgets -->
+                        <!-- ============================================================== -->
+                        <div class="to-do-widget m-t-20">
+                            <!-- .modal for add task -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add Task</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="" class="form-material" id="addquestionform">
+                                                {% csrf_token %} {% for field in form %}
+                                                <div class="form-group">
+                                                    {{ field.errors }} {{ field.label_tag }} {{ field }}
+                                                </div>
+                                                {% endfor %}
+                                                <!--Add choices dynamically-->
+                                                <div id="choice_div" onclick="">
+                                                </div>
+                                                <!--                                                 <input type="submit" value="Submit" />
+                                             -->
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" value="Submit" class="btn btn-success" id="addquestion" data-dismiss="modal">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            <div class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10%">#</th>
+                                                <th style="width: 70%">Question</th>
+                                                <th style="width: 30%">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           {%for i in questions_list %} 
+                                            <tr>
+                                                <td>{{ i.pk}}</td>
+                                                <td> {{i.question_text}}</td>
+                                                <td><div class="m-b-30 bt-switch">
+
+                                     {%if i.is_active %}
+
+                                    <input type="checkbox"  data-handle-width="150"   data-label-width="0" checked data-on-color="warning" data-off-color="danger" data-on-text="Active" data-off-text="Inactive" id="{{i.pk}}" name="question-checkbox" checked>
+                                    
+                                   
+                                     {%else%}
+                                    <input type="checkbox"  data-handle-width="150"   data-label-width="0"   data-on-color="warning" data-off-color="danger" data-on-text="Active" data-off-text="Inactive" id="{{i.pk}}" name="question-checkbox" unchecked>
+
+                                {%endif%} 
+                                    </div></td>
+                                            </tr>
+                                            {%endfor%}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endblock %} {% block scripts%}
-            <script src="{% static '/assets/js/sidebar.min.js' %}"></script>
-            <!-- ============================================================== -->
-            <!-- This page plugins -->
-            <!-- ============================================================== -->
-            <!--sparkline JavaScript -->
-            <script src="{% static '/assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
-            <!--morris JavaScript -->
-            <script src="{% static '/assets/plugins/chartist-js/dist/chartist.min.js' %}"></script>
-            <script src="{% static '/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
-            <!--c3 JavaScript -->
-            <script src="{% static '/assets/plugins/d3/d3.min.js' %}"></script>
-            <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
-            <!-- Popup message jquery -->
-            <script src="{% static '/assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
-            <!-- Chart JS -->
-            <script src="{% static '/assets/js/dashboard1.js' %}"></script>
-            <!-- ============================================================== -->
-            <!-- Style switcher -->
-            <!-- ============================================================== -->
-            <script src="{% static '/assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
-
-    <script>
-
-        var questions_data;
-        function executeQuery() {
-            $.ajax({
-            url: 'questions',
-            success: function(data) {
-              // add questions
-              questions_data = data;
-              console.log(questions_data['questions'][0]);
-            }
-            });
-            setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
-        }
-
-        $(document).ready(function() {
-            // run the first time; all subsequent calls will take care of themselves
-            setTimeout(executeQuery, 1000);
-        });
-
-
-    </script>
-
+        </div>
+    </div>
+    <!-- <div class="ml-auto">
+        <a href="{% url 'add_question' event_id %}">
+            <button class=" btn btn-rounded btn-info">Add Question</button>
+        </a>
+    </div> -->
+    {% endblock %} {% block scripts%}
+    <script src="{% static '/assets/js/sidebar.min.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--sparkline JavaScript -->
+    <script src="{% static '/assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+    <!--morris JavaScript -->
+    <script src="{% static '/assets/plugins/chartist-js/dist/chartist.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <!--c3 JavaScript -->
+    <script src="{% static '/assets/plugins/d3/d3.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
+    <!-- Popup message jquery -->
+    <script src="{% static '/assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
+     <script src="{% static '/assets/plugins/bootstrap-switch/bootstrap-switch.min.js' %}"></script>
+    <script src="{% static '/assets/js/dashboard1.js' %}"></script>
+    <script src="{% static 'event/js/editevent.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{% static '/assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
     {% endblock%}
